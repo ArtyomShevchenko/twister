@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Twister</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			transition: all .2s;
+			user-select: none;
+		}
+
+		.container {
+			width: 100vw;
+			height: 100vh;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+			font-family: cursive;
+			font-size: calc(4vh + 4vw);
+			font-weight: bold;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+	</div>
+
+	  <!-- script -->
+	  <script>
+
+		const container = document.querySelector(".container");
+
+		function roll() {
+			const random = Math.random() * 4;
+			return Math.floor(random);
+		};
+
+		function colorResult(num) {
+			switch (num) {
+				case 0:
+					return "red"
+					break;
+				case 1:
+					return "blue"
+					break;
+				case 2:
+					return "yellow"
+					break;
+				default:
+					return "green";
+			}
+		};
+
+		function textResult(num) {
+			switch (num) {
+				case 0:
+					return "Ліва рука"
+					break;
+				case 1:
+					return "Права рука"
+					break;
+				case 2:
+					return "Ліва нога"
+					break;
+				default:
+					return "Права нога"
+			}
+		};
+
+		function resultAll() {
+			container.style.backgroundColor = colorResult( roll() );
+			container.textContent = textResult( roll() );
+			container.style.color = "white";
+
+			if (container.style.backgroundColor === "yellow") {
+				container.style.color = "black";
+			}
+		};
+
+		resultAll();
+
+		container.addEventListener("click", resultAll)
+
+	  </script>
+	</body>
+</html>
